@@ -26,8 +26,8 @@ elif mode == "prod":
         HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME")
         updater.start_webhook(listen="0.0.0.0",
                               port=PORT,
-                              url_path=TG_TOKEN)
-        updater.bot.set_webhook(f'https://{HEROKU_APP_NAME}.herokuapp.com/{TG_TOKEN}')
+                              url_path=TG_TOKEN,
+                              webhook_url=f'https://{HEROKU_APP_NAME}.herokuapp.com/{TG_TOKEN}')
         updater.idle()
 else:
     logger.error("No MODE specified!")
